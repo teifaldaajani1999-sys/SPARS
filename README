@@ -156,21 +156,7 @@ $$
 
 ---
 
-## Dataset Setup
 
-### CIFAR-10
-
-CIFAR-10 is downloaded automatically through `torchvision`.
-
-### Tiny ImageNet
-
-Tiny ImageNet is **not included in this repository**.
-
-The Tiny ImageNet experiments expect a locally prepared dataset. The dataset paths in the notebooks should be updated according to the user's local environment.
-
-The `data/` directory contains information about the dataset setup rather than the Tiny ImageNet dataset itself.
-
----
 
 ## Experimental Settings
 
@@ -203,38 +189,10 @@ Tiny ImageNet contains 200 classes divided into 10 sequential tasks:
 | Task 9 | 160–179 |
 | Task 10 | 180–199 |
 
----
 
-## Method Overview
 
-SPARS identifies parameters that are important for previously learned tasks and protects them during subsequent training.
 
-The most important parameters (**Top-K**) are strictly frozen during the training of subsequent tasks.
 
-Parameters neighboring the selected Top-K parameters are protected using an importance-weighted quadratic regularization penalty.
-
-Two parameter-importance estimation approaches are evaluated:
-
-- **Fisher Information Matrix (FIM)**
-- **Confidence Scores (CS)**
-
-After each task, the importance information is estimated and then merged with the importance information from previous tasks before training the next task.
-
----
-
-## Checkpoints and Intermediate Files
-
-The notebooks generate intermediate files such as:
-
-- Model checkpoints (`.pth`)
-- Parameter-importance files (`.pkl`)
-- Merged Top-K files
-- Merged neighbor files
-- QDA/Mahalanobis statistics
-
-These files are used by subsequent notebooks in the continual learning sequence.
-
-Some filenames are intentionally preserved because later experiments depend on their exact paths and names.
 
 ---
 
